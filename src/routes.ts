@@ -1,10 +1,11 @@
 // criar as rotas
-import { response, Router } from 'express';
+import { Router } from 'express';
+import { createMentorController } from './Mentor/useCases/createMentor';
 
 const router = Router();
 
-router.post("/create-mentor", (request, reponse) => {
-  return response.status(200).send("ok");
+router.post('/create-mentor', (request, response) => {
+  return createMentorController.handle(request, response);
 });
 
 export { router }
