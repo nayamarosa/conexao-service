@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('postgres://yutgibbdchjotf:44e96755307eb70d3dfceaf45d4dae8dbf9b1c53841bc01e749bf1c9a78c0bbe@ec2-34-227-135-211.compute-1.amazonaws.com:5432/d6cl9ohsgfamkc', {
+const sequelize = new Sequelize('postgres://cmymectxfzchjp:8b90c867378d8bd471b4f00f4f633002af67e6e12fd783008e3b29bc2c2a2789@ec2-44-195-132-31.compute-1.amazonaws.com:5432/dadcvudd04t0q5', {
   dialectOptions: {
     ssl: {
       rejectUnauthorized: false,
