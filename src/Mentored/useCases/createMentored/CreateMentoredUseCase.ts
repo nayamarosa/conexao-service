@@ -20,10 +20,10 @@ export class CreateMentoredUseCase {
         age: requestData.age,
         document: requestData.document,
         profession: requestData.profession,
-        practiceArea: requestData.practiceArea,
+        interestArea: requestData.interestArea,
         education: requestData.education,
         userType: requestData.userType,
-        questions: requestData.questions,
+        mentorshipGoal: requestData.mentorshipGoal,
       }
       return this.mentoredRepository.create(newMentored);
       return newMentored;

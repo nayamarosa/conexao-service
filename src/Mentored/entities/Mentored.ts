@@ -6,10 +6,10 @@ export interface IMentored {
   age: number;
   document: string;
   profession: string;
-  practiceArea: string;
+  interestArea: string;
   education: string;
   userType: string;
-  questions: [];
+  mentorshipGoal: string;
 }
 
 export class Mentored implements IMentored {
@@ -20,10 +20,10 @@ export class Mentored implements IMentored {
   public age: number;
   public document: string;
   public profession: string;
-  public practiceArea: string;
+  public interestArea: string;
   public education: string;
   public userType: string;
-  public questions: [];
+  public mentorshipGoal: string;
 
   constructor(
     newUuid: string,
@@ -33,10 +33,10 @@ export class Mentored implements IMentored {
     newAge: number,
     newDocument: string,
     newProfession: string,
-    newPracticeArea: string,
+    newinterestArea: string,
     newEducation: string,
     newUserType: string,
-    newQuestions: [],
+    newmentorshipGoal: string,
   ) {
     this.uuid = newUuid;
     this.email = newEmail;
@@ -45,9 +45,9 @@ export class Mentored implements IMentored {
     this.age = newAge;
     this.document = newDocument;
     this.profession = newProfession;
-    this.practiceArea = newPracticeArea;
+    this.interestArea = newinterestArea;
     this.education = newEducation;
     this.userType = newUserType;
-    this.questions = newQuestions;
+    this.mentorshipGoal = newmentorshipGoal;
   }
 }

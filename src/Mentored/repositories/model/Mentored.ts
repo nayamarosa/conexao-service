@@ -31,7 +31,7 @@ const Mentored = sequelize.define('mentored', {
         type: DataTypes.STRING,
         allowNull: true
       },
-      practiceArea: {
+      interestArea: {
         type: DataTypes.STRING,
         allowNull: true
       },
@@ -43,8 +43,8 @@ const Mentored = sequelize.define('mentored', {
         type: DataTypes.STRING,
         allowNull: true
       },
-      questions: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+      mentorshipGoal: {
+        type: DataTypes.STRING,
       },
 });
 

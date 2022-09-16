@@ -13,14 +13,14 @@ export class CreateMentoredController {
   }
 
   async handle(request: Request, response: Response) {
-    const { name, email, password, age, document, profession, practiceArea, education, userType, questions} = request.body;
+    const { name, email, password, age, document, profession, interestArea, education, userType, mentorshipGoal} = request.body;
 
-    if (!name || !email || !password || !age || !document || !profession || !practiceArea || !education || !userType || !questions){
+    if (!name || !email || !password || !age || !document || !profession || !interestArea || !education || !userType || !mentorshipGoal){
       console.log('Invalid request');
       return response.status(404).json('Invalid Request'); 
     }
 
-    const newMentoredFromRequest: ICreateMentoredRequest = {name, email, password, age, document, profession, practiceArea, education, userType, questions};
+    const newMentoredFromRequest: ICreateMentoredRequest = {name, email, password, age, document, profession, interestArea, education, userType, mentorshipGoal};
 
     const createdMentored = await this.createMentoredUseCase.execute(newMentoredFromRequest);
 

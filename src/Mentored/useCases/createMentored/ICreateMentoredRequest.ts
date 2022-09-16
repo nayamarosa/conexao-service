@@ -5,8 +5,8 @@ export interface ICreateMentoredRequest {
   age: number;
   document: string;
   profession: string;
-  practiceArea: string;
+  interestArea: string;
   education: string;
   userType: string;
-  questions: [];
+  mentorshipGoal: string;
 }
