@@ -15,9 +15,9 @@ export class MentoredSequelizeRepository implements IMentoredRepository {
     }
   }
 
-  getByMail(email: string) {
+  getByUuid(uuid: string) {
     try {
-      return Mentored.findOne({where: {email: email}}).then((result: any) => {
+      return Mentored.findOne({where: {uuid: uuid}}).then((result: any) => {
         console.log(result);
         return result;
       })

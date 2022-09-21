@@ -15,7 +15,7 @@ export class CreateMentorController {
   async handle(request: Request, response: Response) {
     const { name, email, password, age, document, profession, practiceArea, practiceTime, education, userType} = request.body;
 
-    if (!name || !email || !password || !age || !document || !profession || !practiceArea || !practiceTime || !education || !userType){
+    if (!name || !email || !password || !userType){
       console.log('Invalid request');
       return response.status(404).json('Invalid Request'); 
     }
