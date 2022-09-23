@@ -6,4 +6,6 @@ export interface IMentorRepository {
   getByUuid(uuid: string): Mentor | null;
 
   getAll(): Mentor[] | null;
+
+  update(newMentor: IMentor, uuid: string): Mentor | null;
 }

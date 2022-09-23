@@ -38,4 +38,16 @@ export class MentorSequelizeRepository implements IMentorRepository {
       return null;
     }
   }
+
+  update(newMentor: IMentor) {
+    try {
+      return Mentor.update(newMentor, {where: {uuid: newMentor.uuid}}).then((result: any) => {
+        console.log(result);
+        return newMentor;
+      })
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
 }
