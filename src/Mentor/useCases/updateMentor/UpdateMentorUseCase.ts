@@ -10,10 +10,10 @@ export class UpdateMentorUseCase {
     this.mentorRepository = mentorRepository;
   }
 
-  async execute(requestData: IUpdateMentorRequest): Promise<IMentor | null> {
+  async execute(requestData: IUpdateMentorRequest, uuid: string): Promise<IMentor | null> {
     try {
       const newMentor: IMentor = {
-        uuid: uuidv4(),
+        uuid: uuid,
         email: requestData.email,
         password: requestData.password,
         name: requestData.name,
@@ -26,7 +26,7 @@ export class UpdateMentorUseCase {
         userType: requestData.userType,
       }
       console.log(newMentor)
-      return this.mentorRepository.update(newMentor, newMentor.uuid);
+      return this.mentorRepository.update(newMentor, uuid);
     } catch (error) {
       console.log(error);
       return null

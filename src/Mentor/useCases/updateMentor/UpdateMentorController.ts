@@ -13,16 +13,17 @@ export class UpdateMentorController {
   }
 
   async handle(request: Request, response: Response) {
-    const { uuid, name, email, password, age, document, profession, practiceArea, practiceTime, education, userType} = request.body;
+    const { name, email, password, age, document, profession, practiceArea, practiceTime, education, userType} = request.body;
+    const { uuid } = request.params;
 
     if (!name || !email || !password || !userType){
       console.log('Invalid request');
       return response.status(404).json('Invalid Request'); 
     }
 
-    const updateMentorFromRequest: IUpdateMentorRequest = {uuid, name, email, password, age, document, profession, practiceArea, practiceTime, education, userType};
+    const updateMentorFromRequest: IUpdateMentorRequest = { name, email, password, age, document, profession, practiceArea, practiceTime, education, userType};
 
-    const updatedMentor = await this.updateMentorUseCase.execute(updateMentorFromRequest);
+    const updatedMentor = await this.updateMentorUseCase.execute(updateMentorFromRequest, uuid);
 
     if (!updatedMentor) {
       console.log('Create Mentor execute returned null');
