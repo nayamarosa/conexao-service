@@ -38,4 +38,16 @@ export class MentoredSequelizeRepository implements IMentoredRepository {
       return null;
     }
   }
+
+  update(newMentored: IMentored, uuid: string) {
+    try {
+      return Mentored.update(newMentored, {where: {uuid: newMentored.uuid}}).then((result: any) => {
+        console.log(result);
+        return newMentored;
+      })
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
 }

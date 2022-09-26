@@ -8,6 +8,8 @@ import { updateMentorController } from './Mentor/useCases/updateMentor';
 import { createMentoredController } from './Mentored/useCases/createMentored';
 import { getAllMentoredController } from './Mentored/useCases/getAllMentored';
 import { getMentoredByUuidController } from './Mentored/useCases/getMentoredByUuid';
+import { updateMentoredController } from './Mentored/useCases/updateMentored';
+
 
 const router = Router();
 
@@ -34,6 +36,8 @@ router.get('/mentored', (request, response) => {
 router.get('/mentored/:uuid', (request, response) => {
   return getMentoredByUuidController.handle(request, response);
 });
-
+router.put('/mentored/:uuid', (request, response) => {
+  return updateMentoredController.handle(request, response);
+});
 
 export { router }
