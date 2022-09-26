@@ -3,6 +3,8 @@ import { Router } from 'express';
 import { createMentorController } from './Mentor/useCases/createMentor';
 import { getAllMentorController } from './Mentor/useCases/getAllMentor';
 import { getMentorByUuidController } from './Mentor/useCases/getMentorByUuid';
+import { updateMentorController } from './Mentor/useCases/updateMentor';
+
 import { createMentoredController } from './Mentored/useCases/createMentored';
 import { getAllMentoredController } from './Mentored/useCases/getAllMentored';
 import { getMentoredByUuidController } from './Mentored/useCases/getMentoredByUuid';
@@ -17,6 +19,9 @@ router.get('/mentor', (request, response) => {
 });
 router.get('/mentor/:uuid', (request, response) => {
   return getMentorByUuidController.handle(request, response);
+});
+router.put('/mentor/:uuid', (request, response) => {
+  return updateMentorController.handle(request, response);
 });
 
 
