@@ -1,30 +1,29 @@
 // conexao da requisição que vai para api com o use case
 import { Request, Response } from "express";
-import { GetMentoredByUuidUseCase } from './GetMentoredByUuidUseCase';
+import { GetMentoredByEmailUseCase } from './GetMentoredByEmailUseCase';
 
-export class GetMentoredByUuidController {
-  private getMentoredByUuidUseCase: GetMentoredByUuidUseCase;
+export class GetMentoredByEmailController {
+  private getMentoredByEmailUseCase: GetMentoredByEmailUseCase;
 
   constructor(
-    getMentoredByUuidUseCase: GetMentoredByUuidUseCase
+    getMentoredByEmailUseCase: GetMentoredByEmailUseCase
   ) {
-    this.getMentoredByUuidUseCase = getMentoredByUuidUseCase;
+    this.getMentoredByEmailUseCase = getMentoredByEmailUseCase;
   }
 
   async handle(request: Request, response: Response) {
-    const { uuid } = request.params;
+    const { email } = request.params;
 
-    if (!uuid ){
+    if (!email ){
       console.log('Mentored missing');
       return response.status(404).json('Mentored missing'); 
     }
 
-    const registredMentored = await this.getMentoredByUuidUseCase.execute(uuid);
+    const registredMentored = await this.getMentoredByEmailUseCase.execute(email);
 
     if (registredMentored === null) {
       console.log('Get mentored by uuid execute return null');
       return response.status(500).json(registredMentored);
-      //erro da api
     }
 
     return response.status(200).json(registredMentored);

@@ -1,7 +1,6 @@
 import { IMentor } from '../../entities/Mentor';
 import { IUpdateMentorRequest } from './IUpdateMentorRequest';
 import { IMentorRepository } from '../../repositories/IMentorRepository';
-import { v4 as uuidv4 } from 'uuid';
 
 export class UpdateMentorUseCase {
   private mentorRepository: IMentorRepository;
@@ -10,7 +9,7 @@ export class UpdateMentorUseCase {
     this.mentorRepository = mentorRepository;
   }
 
-  async execute(requestData: IUpdateMentorRequest, uuid: string): Promise<IMentor | null> {
+  async execute(requestData: IUpdateMentorRequest, uuid: string): Promise<IMentor | Error> {
     try {
       const newMentor: IMentor = {
         uuid: uuid,
@@ -27,9 +26,9 @@ export class UpdateMentorUseCase {
       }
       console.log(newMentor)
       return this.mentorRepository.update(newMentor, uuid);
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
-      return null
+      return new Error(error)
     }
   }
 }

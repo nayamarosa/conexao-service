@@ -9,4 +9,5 @@ export interface ICreateMentoredRequest {
   education: string;
   userType: string;
   mentorshipGoal: string;
+  mentorUuid: string | null;
 }

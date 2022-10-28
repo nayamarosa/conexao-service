@@ -24,9 +24,9 @@ export class CreateMentorController {
 
     const createdMentor = await this.createMentorUseCase.execute(newMentorFromRequest);
 
-    if (!createdMentor) {
+    if (createdMentor === null) {
       console.log('Create Mentor execute returned null');
-      return response.status(500).json('Creation of mentor was not possible');
+      return response.status(500).json(createdMentor);
       //erro da api
     }
 

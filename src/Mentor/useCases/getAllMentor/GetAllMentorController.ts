@@ -14,9 +14,9 @@ export class GetAllMentorController {
   async handle(request: Request, response: Response) {
     const registredMentor = await this.getAllMentorUseCase.execute();
 
-    if (!registredMentor) {
+    if (registredMentor === null) {
       console.log('Get all mentor return null');
-      return response.status(500).json('Get all mentor not possible');
+      return response.status(500).json(registredMentor);
       //erro da api
     }
 

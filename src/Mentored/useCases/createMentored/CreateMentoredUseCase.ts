@@ -10,7 +10,7 @@ export class CreateMentoredUseCase {
     this.mentoredRepository = mentoredRepository;
   }
 
-  async execute(requestData: ICreateMentoredRequest): Promise<IMentored | null> {
+  async execute(requestData: ICreateMentoredRequest): Promise<IMentored | Error> {
     try {
       const newMentored: IMentored = {
         uuid: uuidv4(),
@@ -24,12 +24,13 @@ export class CreateMentoredUseCase {
         education: requestData.education,
         userType: requestData.userType,
         mentorshipGoal: requestData.mentorshipGoal,
+        mentorUuid: requestData.mentorUuid,
+        feedbacks: null
       }
       return this.mentoredRepository.create(newMentored);
-      return newMentored;
-    } catch (error) {
+    } catch (error : any) {
       console.log(error);
-      return null
+      return new Error(error)
     }
   }
 }
