@@ -10,6 +10,8 @@ export interface IMentored {
   education: string;
   userType: string;
   mentorshipGoal: string;
+  mentorUuid: string | null;
+  feedbacks: string | null;
 }
 
 export class Mentored implements IMentored {
@@ -24,6 +26,8 @@ export class Mentored implements IMentored {
   public education: string;
   public userType: string;
   public mentorshipGoal: string;
+  public mentorUuid: string | null;
+  public feedbacks: string | null;
 
   constructor(
     newUuid: string,
@@ -37,6 +41,8 @@ export class Mentored implements IMentored {
     newEducation: string,
     newUserType: string,
     newmentorshipGoal: string,
+    newMentorUuid: string | null,
+    newFeedbacks: string | null
   ) {
     this.uuid = newUuid;
     this.email = newEmail;
@@ -49,5 +55,7 @@ export class Mentored implements IMentored {
     this.education = newEducation;
     this.userType = newUserType;
     this.mentorshipGoal = newmentorshipGoal;
+    this.mentorUuid = newMentorUuid;
+    this.feedbacks = newFeedbacks;
   }
 }

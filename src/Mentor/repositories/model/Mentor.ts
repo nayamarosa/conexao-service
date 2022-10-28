@@ -1,7 +1,7 @@
-const sequelize =  require('./../../../db/conection');
-import { DataTypes } from 'sequelize';
+import postgree from './../../../db/conection';
+import { DataTypes, Model } from 'sequelize';
 
-const Mentor = sequelize.define('mentor', {
+const Mentor = postgree.sequelize.define('mentor', {
     uuid: {
         type: DataTypes.UUID,
         allowNull: false,

@@ -1,11 +1,15 @@
 import { IMentored, Mentored } from '../entities/Mentored';
 
 export interface IMentoredRepository {
-  create(newMentored: IMentored): Mentored | null;
+  create(newMentored: IMentored): Mentored | Error;
 
-  getByUuid(uuid: string): Mentored | null;
+  getByUuid(uuid: string): Mentored | Error;
 
-  getAll(): Mentored[] | null;
+  getByEmail(email: string): Mentored | Error;
 
-  update(newMentored: IMentored, uuid: string): Mentored | null;
+  getAll(): Mentored[] | Error;
+
+  update(newMentored: IMentored, uuid: string): Mentored | Error;
+
+  createFeedback(uuid: string, feedBack: string): Mentored | Error;
 }

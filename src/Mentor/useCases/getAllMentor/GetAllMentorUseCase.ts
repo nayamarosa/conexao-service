@@ -9,12 +9,12 @@ export class GetAllMentorUseCase {
     this.mentorRepository = mentorRepository;
   }
 
-  async execute(): Promise<IMentor[] | null> {
+  async execute(): Promise<IMentor[] | Error> {
     try {
       return this.mentorRepository.getAll();
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
-      return null
+      return new Error(error)
     }
   }
 }

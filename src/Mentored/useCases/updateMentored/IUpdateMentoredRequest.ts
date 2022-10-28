@@ -9,4 +9,5 @@ export interface IUpdateMentoredRequest {
   education: string;
   userType: string;
   mentorshipGoal: string;
+  feedback: string | null;
 }

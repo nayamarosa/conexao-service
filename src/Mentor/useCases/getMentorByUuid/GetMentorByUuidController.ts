@@ -21,9 +21,9 @@ export class GetMentorByUuidController {
 
     const registredMentor = await this.getMentorByUuidUseCase.execute(uuid);
 
-    if (!registredMentor) {
+    if (registredMentor === null) {
       console.log('Get mentor by uuid execute return null');
-      return response.status(500).json('Get mentor by uuid not possible');
+      return response.status(500).json(registredMentor);
       //erro da api
     }
 

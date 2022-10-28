@@ -1,3 +1,4 @@
+import { Mentored } from '../../../Mentored/repositories/model/Mentored';
 import { IMentor } from '../../entities/Mentor';
 import { IMentorRepository } from '../IMentorRepository';
 import { Mentor } from '../model/Mentor';
@@ -11,19 +12,31 @@ export class MentorSequelizeRepository implements IMentorRepository {
       })
     } catch (error) {
       console.log(error);
-      return null;
+      return error;
     }
   }
 
   getByUuid(uuid: string) {
     try {
-      return Mentor.findOne({where: {uuid: uuid}}).then((result: any) => {
+      return Mentor.findByPk(uuid, {include: [Mentored]}).then((result: any) => {
         console.log(result);
         return result;
       })
     } catch (error) {
       console.log(error);
-      return null;
+      return error;
+    }
+  }
+
+  getByEmail(email: string) {
+    try {
+      return Mentor.findOne({where: {email: email},include: [Mentored]}).then((result: any) => {
+        console.log(result);
+        return result;
+      })
+    } catch (error) {
+      console.log(error);
+      return error;
     }
   }
 
@@ -35,7 +48,7 @@ export class MentorSequelizeRepository implements IMentorRepository {
       })
     } catch (error) {
       console.log(error);
-      return null;
+      return error;
     }
   }
 
@@ -47,7 +60,7 @@ export class MentorSequelizeRepository implements IMentorRepository {
       })
     } catch (error) {
       console.log(error);
-      return null;
+      return error;
     }
   }
 }

@@ -1,7 +1,8 @@
-const sequelize =  require('./../../../db/conection');
+import postgree from './../../../db/conection';
 import { DataTypes } from 'sequelize';
+import { Mentor } from '../../../Mentor/repositories/model/Mentor';
 
-const Mentored = sequelize.define('mentored', {
+const Mentored = postgree.sequelize.define('mentoreds', {
     uuid: {
         type: DataTypes.UUID,
         allowNull: false,
@@ -46,7 +47,22 @@ const Mentored = sequelize.define('mentored', {
       mentorshipGoal: {
         type: DataTypes.STRING,
       },
-});
+      feedBacks: {
+        type: DataTypes.STRING
+      }
+
+    });
+
+
+Mentored.belongsTo(Mentor, {
+  constraint: true,
+  foreignKey: 'mentorUuid',
+})
+
+Mentor.hasMany(Mentored, {
+  foreignKey: 'mentorUuid',
+})
+
 
 const init = async () => {
   await Mentored.sync()

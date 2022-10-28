@@ -15,18 +15,23 @@ export class CreateMentoredController {
   async handle(request: Request, response: Response) {
     const { name, email, password, age, document, profession, interestArea, education, userType, mentorshipGoal} = request.body;
 
+    console.log(request.body);
+
     if (!name || !email || !password || !userType){
       console.log('Invalid request');
       return response.status(404).json('Invalid Request'); 
     }
 
-    const newMentoredFromRequest: ICreateMentoredRequest = {name, email, password, age, document, profession, interestArea, education, userType, mentorshipGoal};
+    const mentorUuid = null
+
+    
+    const newMentoredFromRequest: ICreateMentoredRequest = {name, email, password, age, document, profession, interestArea, education, userType, mentorshipGoal, mentorUuid};
 
     const createdMentored = await this.createMentoredUseCase.execute(newMentoredFromRequest);
 
-    if (!createdMentored) {
+    if (createdMentored === null) {
       console.log('Create Mentored execute returned null');
-      return response.status(500).json('Creation of mentored was not possible');
+      return response.status(500).json(createdMentored);
       //erro da api
     }
 
